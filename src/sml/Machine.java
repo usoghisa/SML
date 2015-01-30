@@ -41,7 +41,7 @@ public class Machine {
 		System.out.println("Here is the program; it has " + m.getProg().size() + " instructions.");
 		System.out.println(m);
 
-		System.out.println("Beginning program execution.");
+		System.out.println("3Beginning program execution.");
 		m.execute();
 		System.out.println("Ending program execution.");
 
