@@ -34,14 +34,14 @@ public class Machine {
 		
 		Machine m = new Machine();
 		
-		Translator t = new Translator(args[0]);//_____________________________yyy
-		//Translator t = new Translator("uuu");
+		//Translator t = new Translator(args[0]);//_____________________________yyy
+		Translator t = new Translator("uuu.txt");
 		t.readAndTranslate(m.getLabels(), m.getProg());
 
 		System.out.println("Here is the program; it has " + m.getProg().size() + " instructions.");
 		System.out.println(m);
 
-		System.out.println("333322222Beginning program execution.");
+		System.out.println("Beginning program execution.");
 		m.execute();
 		System.out.println("Ending program execution.");
 
