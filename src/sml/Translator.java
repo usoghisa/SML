@@ -83,6 +83,10 @@ public class Translator {
 
 		String ins = scan();////////////////////use  reflection_____________________
 		switch (ins) {
+		case "bnz":
+			r = scanInt();
+			s1 = scanInt();
+			return new BnzInstruction(label, r, s1);
 		case "mul":
 			r = scanInt();
 			s1 = scanInt();
