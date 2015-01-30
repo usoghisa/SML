@@ -1,0 +1,6 @@
+l1 lin 20 1
+l2 lin 21 2
+l3 add 22 20 21
+l4 out 22
+l5 sub 30 21 20
+l6 out 30
