@@ -24,7 +24,7 @@ public class OutInstruction extends Instruction {
 	@Override
 	public void execute(Machine m) {
 		this.result = m.getRegisters().getRegister(this.register);
-		System.out.println("Result store on register "+ this.register + " is "+ this.result+"*****SHOULD PRINT HERE******");
+		System.out.println("Result store on register "+ this.register + " is "+ this.result);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class Machine {
 		// print String arguments passed to the main
         //System.out.println("String arguments passed while running this Java Program : ");
         //for(String argument : args){ System.out.print(argument+ " ");}
-        System.out.println();
+        System.out.println(" I pass uuu.txt to Translator t as a sequence of instruction");
 		
 		Machine m = new Machine();
 		
