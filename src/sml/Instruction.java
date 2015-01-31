@@ -9,7 +9,6 @@ package sml;
 public abstract class Instruction {
 	protected String label;
 	protected String opcode;
-	//protected String outPut;
 	
 	// Constructor: an instruction with label l and opcode op
 	// (op must be an operation of the language)
@@ -17,14 +16,13 @@ public abstract class Instruction {
 	public Instruction(String l, String op ) {
 		this.label = l;
 		this.opcode = op;
-		//this.outPut = out;
 	}
 
 	// = the representation "label: opcode" of this Instruction
 
 	@Override
 	public String toString() {
-		return label + ": " + opcode;// + ": " + opcode;
+		return label + ": " + opcode;
 	}
 
 	// Execute this instruction on machine m.

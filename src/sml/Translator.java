@@ -77,6 +77,7 @@ public class Translator {
 		int s2;
 		int r;
 		int x;
+		String ln;
 
 		if (line.equals(""))
 			return null;
@@ -85,8 +86,8 @@ public class Translator {
 		switch (ins) {
 		case "bnz":
 			r = scanInt();
-			s1 = scanInt();
-			return new BnzInstruction(label, r, s1);
+			ln = scan();
+			return new BnzInstruction(label, r, ln);
 		case "mul":
 			r = scanInt();
 			s1 = scanInt();
@@ -130,7 +131,6 @@ public class Translator {
 		line = line.trim();
 		if (line.length() == 0)
 			return "";
-
 		int i = 0;
 		while (i < line.length() && line.charAt(i) != ' ' && line.charAt(i) != '\t') {
 			i = i + 1;
