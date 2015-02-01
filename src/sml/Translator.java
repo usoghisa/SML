@@ -1,13 +1,18 @@
 package sml;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Properties;
 import java.util.Scanner;
 
 /*
- * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
+ * The translator of a SML program.///////////////////////////////////
  */
 public class Translator {
 
@@ -21,6 +26,7 @@ public class Translator {
 
 	private static final String SRC = "src";
 
+	
 	public Translator(String fileName) {
 		this.fileName = SRC + "/" + fileName;
 	}
@@ -68,7 +74,8 @@ public class Translator {
 		}
 		return true;
 	}
-
+	
+	//////////////////////// use Case_______________________________________________ 
 	// line should consist of an MML instruction, with its label already
 	// removed. Translate line into an instruction with label label
 	// and return the instruction
@@ -76,13 +83,13 @@ public class Translator {
 		int s1; // Possible operands of the instruction
 		int s2;
 		int r;
-		int x;
+		//int x;
 		String ln;
 
 		if (line.equals(""))
 			return null;
 
-		String ins = scan();////////////////////use  reflection222_____________________
+		String ins = scan();////////////////////use  reflection here_____________________
 		switch (ins) {
 		case "bnz":
 			r = scanInt();
@@ -102,7 +109,7 @@ public class Translator {
 			r = scanInt();
 			s1 = scanInt();
 			s2 = scanInt();
-			return new SubtrInstruction(label, r, s1, s2);
+			return new SubInstruction(label, r, s1, s2);
 		case "add":
 			r = scanInt();
 			s1 = scanInt();
@@ -118,10 +125,10 @@ public class Translator {
 			//return new OutInstruction(label, r, s1);
 			return new OutInstruction(label, r);
 		}
-		// You will have to write code here for the other instructions.__________________UUU
-
+		// You will have to write code here for the other instructions.
 		return null;
 	}
+
 
 	/*
 	 * Return the first word of line and remove it from line. If there is no
