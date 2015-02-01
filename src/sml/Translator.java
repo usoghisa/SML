@@ -82,7 +82,7 @@ public class Translator {
 		if (line.equals(""))
 			return null;
 
-		String ins = scan();////////////////////use  reflection_____________________
+		String ins = scan();////////////////////use  reflection222_____________________
 		switch (ins) {
 		case "bnz":
 			r = scanInt();
