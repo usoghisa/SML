@@ -12,7 +12,7 @@ import java.util.Properties;
 import java.util.Scanner;
 
 /*
- * The translator of a SML program.///////////////////////////////////
+ * The translator of a SML program.
  */
 public class Translator {
 

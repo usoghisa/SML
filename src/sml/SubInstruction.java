@@ -7,17 +7,17 @@ package sml;
  * @author someone
  */
 
-public class SubtrInstruction extends Instruction {
+public class SubInstruction extends Instruction {
 
 	private int result;
 	private int op1;
 	private int op2;
 
-	public SubtrInstruction(String label, String op) {
+	public SubInstruction(String label, String op) {
 		super(label, op);
 	}
 
-	public SubtrInstruction(String label, int result, int op1, int op2) {
+	public SubInstruction(String label, int result, int op1, int op2) {
 		this(label, "sub");
 		this.result = result;
 		this.op1 = op1;

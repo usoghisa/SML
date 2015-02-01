@@ -12,4 +12,3 @@ l11 bnz 0 l10
 l12 bnz 2 l10
 l13 out 30
 l14 out 31
-l15 out 22
