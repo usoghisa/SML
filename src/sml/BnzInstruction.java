@@ -34,6 +34,7 @@ public class BnzInstruction extends Instruction {
 			System.out.println("__________"+ m.getLabels().indexOf("l12"));
 			System.out.println("__________"+ m.getPc()+1);
 			System.out.println("__________"+ m.getProg().get(m.getLabels().indexOf(lineN)));*/
+			
 			Instruction NextInstruction = (m.getProg().get(m.getLabels().indexOf(lineN)));
 			Instruction ins = NextInstruction;
 			ins.execute(m);		
