@@ -25,7 +25,7 @@ public class BnzInstruction extends Instruction {
 		if (r == 0) {
 			System.out.println("\t"+label +" value of register "+register+" is "+r+" continue...");
 		} else {	
-			System.out.println("\t"+label +" value of register "+register+" is zero execute line "+ this.lineN);
+			System.out.println("\t"+label +" value of register "+register+" is not zero execute line "+ this.lineN);
 			/*			
 			System.out.println("__________"+label);
 			System.out.println("__________"+m.getLabels());
