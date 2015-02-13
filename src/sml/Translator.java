@@ -12,7 +12,7 @@ import java.util.Properties;
 import java.util.Scanner;
 
 /*
- * The translator of a SML program.
+ * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
  */
 public class Translator {
 
@@ -25,6 +25,12 @@ public class Translator {
 	private String fileName; // source file of SML code
 
 	private static final String SRC = "src";
+	///////////////////
+	private Properties prpt = null;
+	private static final int sbConst = 1;
+	private static final String strTyp = "String";	
+	private static final int frstParam = 0;
+	private static final String intTyp 	= "int";
 
 	
 	public Translator(String fileName) {
@@ -74,16 +80,75 @@ public class Translator {
 		}
 		return true;
 	}
+	//////////////////////reflection using external file for future update_________________________
+	public Instruction getInstruction(String label) {
+
+		if (line.equals(""))
+			return null;
 	
+		/*
+		 * name of the class for diff instr are store in exter file In src folder named instructionsClsNam.txt
+		 * so other istr clas can be generate,  put into instructionsClsNam.txt file.
+		 *   
+		 * create a new instance  class with the right arguments.
+		 * label, s1
+		 * label, r, s1
+		 * label, s1, x
+		 * label, r, s1, s2
+		 * label x = strings s1, r, s2 = int.
+		 */
+		
+		prpt = new Properties();
+		String instrct = scan();
+		Instruction instruction = null;
+		Class<?> instrct_class;
+		
+		try {
+			prpt.load(new FileInputStream("src/instructionsClsNam.txt"));
+		} catch (FileNotFoundException e) {
+			System.out.println("SML properties file not found.");
+		} catch (IOException e) {
+			System.out.println("Java IO Exception");
+		}
+		//pass instr to get class name from instructionsClsNam.txt
+		String instrtName = prpt.getProperty(instrct);	
+		try {
+			// Get the Class with the given name
+			instrct_class = Class.forName(instrtName);
+			// Get an array of public constructors for give class
+			Constructor<?>[] constructorsArr = instrct_class.getConstructors();
+			// Get the second constructor
+			Constructor<?> constructor = constructorsArr[sbConst];
+			// array of the constructors parameter type
+			Class<?>[] prmtTyp  = constructor.getParameterTypes();
+			//objects array to holding parameter values to pass to the constructor.newInstance
+			Object[] parameters = new Object[prmtTyp.length];
+			// first parameter is the label passed in.
+			parameters[frstParam] = label;
+			// Loop to check the remaining parameter types. Call scan() for String, scanInt() for int.
+			for (int i = 1; i < parameters.length; i ++){
+					if (prmtTyp[i].getSimpleName().equals(strTyp)){
+					parameters[i] = scan();
+				} else if (prmtTyp[i].getSimpleName().equals(intTyp)){
+					parameters[i] = scanInt();
+				}
+			}
+			// New instruction
+			instruction = (Instruction) constructor.newInstance(parameters);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			System.out.println(e.getMessage());
+		}
+        return instruction;
+	}	
 	//////////////////////// use Case_______________________________________________ 
 	// line should consist of an MML instruction, with its label already
 	// removed. Translate line into an instruction with label label
 	// and return the instruction
-	public Instruction getInstruction(String label) {
+	/*public Instruction getInstruction(String label) {
 		int s1; // Possible operands of the instruction
 		int s2;
 		int r;
-		//int x;
+		int x;
 		String ln;
 
 		if (line.equals(""))
@@ -127,7 +192,7 @@ public class Translator {
 		}
 		// You will have to write code here for the other instructions.
 		return null;
-	}
+	}*/
 
 
 	/*
