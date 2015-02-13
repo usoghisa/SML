@@ -1,0 +1,7 @@
+add=sml.AddInstruction
+sub=sml.SubInstruction
+mul=sml.MulInstruction
+div=sml.DivInstruction
+out=sml.OutInstruction
+lin=sml.LinInstruction
+bnz=sml.BnzInstruction
